@@ -1,12 +1,14 @@
 /* eslint-disable prefer-arrow-callback */
 
 import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { check } from 'meteor/check';
+import SimpleSchema from 'simpl-schema';
 
 import { Todos } from '../todos.js';
 import { Lists } from '../../lists/lists.js';
 
 Meteor.publishComposite('todos.inList', function todosInList(params) {
+  check(params, Match.Any);
   new SimpleSchema({
     listId: { type: String },
   }).validate(params);

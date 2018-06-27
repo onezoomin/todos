@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Factory } from 'meteor/factory';
 import faker from 'faker';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import SimpleSchema from 'simpl-schema';
 
 import incompleteCountDenormalizer from './incompleteCountDenormalizer.js';
 import { Lists } from '../lists/lists.js';
