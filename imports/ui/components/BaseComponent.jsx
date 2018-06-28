@@ -31,9 +31,7 @@ class BaseComponent extends Component {
   }
 
   redirectTo(path) {
-    this.state.redirectTo = path;
-    console.log(this);
-    this.renderRedirect();
+    this.setState({ redirectTo: path });
   }
 
   renderRedirect() {

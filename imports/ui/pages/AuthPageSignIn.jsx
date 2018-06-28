@@ -2,8 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import BaseComponent from '../components/BaseComponent.jsx';
+import { withRouter } from 'react-router-dom';
 
 import AuthPage from './AuthPage.jsx';
 
@@ -19,7 +21,6 @@ class SignInPage extends BaseComponent {
     const email = this.email.value;
     const password = this.password.value;
     const errors = {};
-
     if (!email) {
       errors.email = i18n.__('pages.authPageSignIn.emailRequired');
     }
@@ -38,9 +39,9 @@ class SignInPage extends BaseComponent {
           errors: { none: err.reason },
         });
       } else {
-        this.redirectTo('/');
-        console.log('should Redirect');
-        //this.render();
+        //this.redirectTo('/');
+        //console.log('should Redirect');
+        this.props.history.push('/');
       }
     });
   }
@@ -121,4 +122,4 @@ SignInPage.propTypes = {
   menuOpen: PropTypes.object.isRequired,
 };
 
-export default SignInPage;
+export default withRouter(SignInPage);
