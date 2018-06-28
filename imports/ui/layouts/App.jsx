@@ -119,7 +119,7 @@ export default class App extends Component {
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
               />
-              <span>Slide Closed</span>
+              <span>Close Sidebar</span>
             </Menu.Item>
             <Menu.Item key="1">
               <Icon type="global" />
@@ -194,7 +194,10 @@ export default class App extends Component {
             )}
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2016 Created by Ant UED
+            Relies on
+            <a href="https://ant.design/components/layout/#components-layout-demo-side">
+              Ant Design©
+            </a>
           </Footer>
         </Layout>
       </Layout>
