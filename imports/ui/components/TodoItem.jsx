@@ -6,6 +6,8 @@ import i18n from 'meteor/universe:i18n';
 import BaseComponent from './BaseComponent.jsx';
 import { displayError } from '../helpers/errors.js';
 
+import { Icon } from 'antd';
+
 import {
   setCheckedStatus,
   updateText,
@@ -17,10 +19,13 @@ export default class TodoItem extends BaseComponent {
     super(props);
     this.throttledUpdate = _.throttle((value) => {
       if (value) {
-        updateText.call({
-          todoId: this.props.todo._id,
-          newText: value,
-        }, displayError);
+        updateText.call(
+          {
+            todoId: this.props.todo._id,
+            newText: value,
+          },
+          displayError
+        );
       }
     }, 300);
 
@@ -75,7 +80,6 @@ export default class TodoItem extends BaseComponent {
           <span className="checkbox-custom" />
         </label>
         <input
-
           type="text"
           defaultValue={todo.text}
           placeholder={i18n.__('components.todoItem.taskName')}
@@ -83,14 +87,13 @@ export default class TodoItem extends BaseComponent {
           onBlur={this.onBlur}
           onChange={this.updateTodo}
         />
-        <a
+        <Icon
           className="delete-item"
+          type="delete"
           href="#delete"
           onClick={this.deleteTodo}
           onMouseDown={this.deleteTodo}
-        >
-          <span className="icon-trash" />
-        </a>
+        />
       </div>
     );
   }
