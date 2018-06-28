@@ -110,7 +110,7 @@ export default class App extends Component {
             theme="dark"
             defaultSelectedKeys={['1']}
             mode="inline"
-            style={{ paddingRight: '30px' }}
+            defaultOpenKeys={['sub1']}
           >
             <Menu.Item key="0">
               <Icon
@@ -152,7 +152,7 @@ export default class App extends Component {
           </Menu>
         </Sider>
         <Layout>
-          <Content style={{ margin: '0 16px' }}>
+          <Content style={{ margin: '0' }}>
             {showConnectionIssue && !connected ? (
               <ConnectionNotification />
             ) : null}

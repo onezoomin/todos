@@ -39,34 +39,38 @@ class SignInPage extends BaseComponent {
         });
       } else {
         this.redirectTo('/');
+        console.log('should Redirect');
+        //this.render();
       }
     });
   }
 
   render() {
     const { errors } = this.state;
-    const errorMessages = Object.keys(errors).map(key => errors[key]);
-    const errorClass = key => errors[key] && 'error';
+    const errorMessages = Object.keys(errors).map((key) => errors[key]);
+    const errorClass = (key) => errors[key] && 'error';
 
     const content = (
       <div className="wrapper-auth">
-        <h1 className="title-auth">
-          {i18n.__('pages.authPageSignIn.signIn')}
-        </h1>
+        <h1 className="title-auth">{i18n.__('pages.authPageSignIn.signIn')}</h1>
         <p className="subtitle-auth">
           {i18n.__('pages.authPageSignIn.signInReason')}
         </p>
         <form onSubmit={this.onSubmit}>
           <div className="list-errors">
-            {errorMessages.map(msg => (
-              <div className="list-item" key={msg}>{msg}</div>
+            {errorMessages.map((msg) => (
+              <div className="list-item" key={msg}>
+                {msg}
+              </div>
             ))}
           </div>
           <div className={`input-symbol ${errorClass('email')}`}>
             <input
               type="email"
               name="email"
-              ref={(c) => { this.email = c; }}
+              ref={(c) => {
+                this.email = c;
+              }}
               placeholder={i18n.__('pages.authPageSignIn.yourEmail')}
             />
             <span
@@ -78,7 +82,9 @@ class SignInPage extends BaseComponent {
             <input
               type="password"
               name="password"
-              ref={(c) => { this.password = c; }}
+              ref={(c) => {
+                this.password = c;
+              }}
               placeholder={i18n.__('pages.authPageSignIn.password')}
             />
             <span
@@ -99,8 +105,15 @@ class SignInPage extends BaseComponent {
       </Link>
     );
 
-    return this.renderRedirect() ||
-      <AuthPage content={content} link={link} menuOpen={this.props.menuOpen} />;
+    return (
+      this.renderRedirect() || (
+        <AuthPage
+          content={content}
+          link={link}
+          menuOpen={this.props.menuOpen}
+        />
+      )
+    );
   }
 }
 

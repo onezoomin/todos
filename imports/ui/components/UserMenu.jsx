@@ -28,16 +28,18 @@ export default class UserMenu extends BaseComponent {
     return (
       <div className="user-menu vertical">
         <a href="#toggle" className="btn-secondary" onClick={this.toggle}>
-          {open
-            ? <span className="icon-arrow-up" />
-            : <span className="icon-arrow-down" />}
+          {open ? (
+            <span className="icon-arrow-up" />
+          ) : (
+            <span className="icon-arrow-down" />
+          )}
           {emailLocalPart}
         </a>
-        {open ?
+        {open ? (
           <a className="btn-secondary" onClick={logout}>
             {i18n.__('components.userMenu.logout')}
-          </a> :
-          null}
+          </a>
+        ) : null}
       </div>
     );
   }
@@ -56,9 +58,7 @@ export default class UserMenu extends BaseComponent {
   }
 
   render() {
-    return this.props.user
-      ? this.renderLoggedIn()
-      : this.renderLoggedOut();
+    return this.props.user ? this.renderLoggedIn() : this.renderLoggedOut();
   }
 }
 

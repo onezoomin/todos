@@ -31,13 +31,15 @@ class BaseComponent extends Component {
   }
 
   redirectTo(path) {
-    this.setState({ redirectTo: path });
+    this.state.redirectTo = path;
+    console.log(this);
+    this.renderRedirect();
   }
 
   renderRedirect() {
-    return this.state.redirectTo
-      ? <Redirect to={this.state.redirectTo} />
-      : null;
+    return this.state.redirectTo ? (
+      <Redirect to={this.state.redirectTo} />
+    ) : null;
   }
 }
 
