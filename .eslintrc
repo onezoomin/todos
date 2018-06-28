@@ -1,0 +1,16 @@
+{
+  "extends": ["plugin:meteor/recommended", "plugin:jsx-a11y/recommended"],
+  "parser": "babel-eslint",
+  "plugins": ["react", "meteor", "jsx-a11y"],
+  "ecmaFeatures": { "jsx": true },
+  "globals": { "React": true },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-template-curly-in-string": "off"
+  }
+}
