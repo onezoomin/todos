@@ -3,7 +3,7 @@
     [
       "import",
       {
-        "libraryName": "antd",
+        "libraryName": "@blueprintjs/core",
         "style": "true"
       }
     ]

@@ -18,10 +18,24 @@ import ListHeader from '../components/ListHeader.jsx';
 
 const CONNECTION_ISSUE_TIMEOUT = 5000;
 
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import {
+  Alignment,
+  Button,
+  Classes,
+  H5,
+  Navbar,
+  NavbarDivider,
+  NavbarGroup,
+  NavbarHeading,
+  Menu,
+  MenuItem,
+  Breadcrumb,
+  Icon,
+} from '@blueprintjs/core';
 
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
+// import { Layout } from 'antd';
+// const { Header, Content, Footer, Navbar } = Layout;
+// const MenuItem = Menu.MenuItem;
 
 export default class App extends Component {
   static getDerivedStateFromProps(nextProps) {
@@ -98,21 +112,15 @@ export default class App extends Component {
       menuOpen: this.props.menuOpen,
     };
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider
-          width="300px"
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}
-        >
+      <div style={{ minHeight: '100vh' }}>
+        <Navbar>
           <Menu
             theme="dark"
             defaultSelectedKeys={['1']}
             mode="inline"
             defaultOpenKeys={['sub1']}
           >
-            <Menu.Item key="0">
+            <MenuItem key="0">
               <Icon
                 style={{ fontSize: '150%' }}
                 className="trigger"
@@ -120,14 +128,14 @@ export default class App extends Component {
                 onClick={this.toggle}
               />
               <span>Close Sidebar</span>
-            </Menu.Item>
-            <Menu.Item key="1">
+            </MenuItem>
+            <MenuItem key="1">
               <Icon type="global" />
               <span>
                 <LanguageToggle style={{ paddingLeft: '36px' }} />
               </span>
-            </Menu.Item>
-            <SubMenu
+            </MenuItem>
+            <MenuItem
               key="sub0"
               title={
                 <span>
@@ -137,8 +145,8 @@ export default class App extends Component {
               }
             >
               <UserMenu user={user} logout={this.logout} />
-            </SubMenu>
-            <SubMenu
+            </MenuItem>
+            <MenuItem
               key="sub1"
               title={
                 <span>
@@ -148,11 +156,11 @@ export default class App extends Component {
               }
             >
               <ListList lists={lists} />
-            </SubMenu>
+            </MenuItem>
           </Menu>
-        </Sider>
-        <Layout>
-          <Content style={{ margin: '0' }}>
+        </Navbar>
+        <div>
+          <div style={{ margin: '0' }}>
             {showConnectionIssue && !connected ? (
               <ConnectionNotification />
             ) : null}
@@ -192,15 +200,13 @@ export default class App extends Component {
                 </CSSTransition>
               </TransitionGroup>
             )}
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          </div>
+          <div style={{ textAlign: 'center' }}>
             Relies on
-            <a href="https://ant.design/components/layout/#components-layout-demo-side">
-              Ant Design©
-            </a>
-          </Footer>
-        </Layout>
-      </Layout>
+            <a href="http://blueprintjs.com/">blueprintjs</a>
+          </div>
+        </div>
+      </div>
     );
   }
 
