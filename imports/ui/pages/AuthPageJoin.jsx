@@ -7,10 +7,25 @@ import BaseComponent from '../components/BaseComponent.jsx';
 
 import AuthPage from './AuthPage.jsx';
 
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = (theme) => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
+
 class JoinPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = Object.assign(this.state, { errors: {} });
+    this.classes = props.classes;
+    this.state = Object.assign(this.state, {
+      errors: {},
+    });
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -31,48 +46,57 @@ class JoinPage extends BaseComponent {
       errors.confirm = i18n.__('pages.authPageJoin.passwordConfirm');
     }
 
-    this.setState({ errors });
+    this.setState({
+      errors,
+    });
     if (Object.keys(errors).length) {
       return;
     }
 
-    Accounts.createUser({
-      email,
-      password,
-    }, (err) => {
-      if (err) {
-        this.setState({
-          errors: { none: err.reason },
-        });
+    Accounts.createUser(
+      {
+        email,
+        password,
+      },
+      (err) => {
+        if (err) {
+          this.setState({
+            errors: {
+              none: err.reason,
+            },
+          });
+        }
+        this.redirectTo('/');
       }
-      this.redirectTo('/');
-    });
+    );
   }
 
   render() {
     const { errors } = this.state;
-    const errorMessages = Object.keys(errors).map(key => errors[key]);
-    const errorClass = key => errors[key] && 'error';
+    const errorMessages = Object.keys(errors).map((key) => errors[key]);
+    const errorClass = (key) => errors[key] && 'error';
 
     const content = (
       <div className="wrapper-auth">
-        <h1 className="title-auth">
-          {i18n.__('pages.authPageJoin.join')}
-        </h1>
+        <h1 className="title-auth"> {i18n.__('pages.authPageJoin.join')} </h1>
         <p className="subtitle-auth">
           {i18n.__('pages.authPageJoin.joinReason')}
         </p>
         <form onSubmit={this.onSubmit}>
           <div className="list-errors">
-            {errorMessages.map(msg => (
-              <div className="list-item" key={msg}>{msg}</div>
+            {errorMessages.map((msg) => (
+              <div className="list-item" key={msg}>
+                {msg}
+              </div>
             ))}
           </div>
           <div className={`input-symbol ${errorClass('email')}`}>
             <input
               type="email"
               name="email"
-              ref={(c) => { this.email = c; }}
+              ref={(c) => {
+                this.email = c;
+              }}
               placeholder={i18n.__('pages.authPageJoin.yourEmail')}
             />
             <span
@@ -84,7 +108,9 @@ class JoinPage extends BaseComponent {
             <input
               type="password"
               name="password"
-              ref={(c) => { this.password = c; }}
+              ref={(c) => {
+                this.password = c;
+              }}
               placeholder={i18n.__('pages.authPageJoin.password')}
             />
             <span
@@ -96,7 +122,9 @@ class JoinPage extends BaseComponent {
             <input
               type="password"
               name="confirm"
-              ref={(c) => { this.confirm = c; }}
+              ref={(c) => {
+                this.confirm = c;
+              }}
               placeholder={i18n.__('pages.authPageJoin.confirmPassword')}
             />
             <span
@@ -104,9 +132,13 @@ class JoinPage extends BaseComponent {
               title={i18n.__('pages.authPageJoin.confirmPassword')}
             />
           </div>
-          <button type="submit" className="btn-primary">
+          <Button
+            variant="contained"
+            color="primary"
+            className={this.classes.button}
+          >
             {i18n.__('pages.authPageJoin.joinNow')}
-          </button>
+          </Button>
         </form>
       </div>
     );
@@ -117,13 +149,22 @@ class JoinPage extends BaseComponent {
       </Link>
     );
 
-    return this.renderRedirect() ||
-      <AuthPage content={content} link={link} menuOpen={this.props.menuOpen} />;
+    return (
+      this.renderRedirect() || (
+        <AuthPage
+          content={content}
+          link={link}
+          menuOpen={this.props.menuOpen}
+        />
+      )
+    );
   }
 }
 
 JoinPage.propTypes = {
   menuOpen: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
+JoinPage = withStyles(styles)(JoinPage);
 export default JoinPage;
