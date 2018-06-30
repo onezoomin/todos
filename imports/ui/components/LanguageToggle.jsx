@@ -31,15 +31,17 @@ class LanguageToggle extends BaseComponent {
       let content;
       if (language === this.state.locale) {
         content = (
-          <span key={language} className="language active">{language}</span>
+          <span key={language} className="language active pt-popover-dismiss">
+            {language}
+          </span>
         );
       } else {
         content = (
           <a
             key={language}
             href="#toggle-language"
-            className="language"
-            onClick={event => this.setLocale(event, language)}
+            className="language pt-popover-dismiss"
+            onClick={(event) => this.setLocale(event, language)}
           >
             {language}
           </a>
@@ -50,11 +52,7 @@ class LanguageToggle extends BaseComponent {
   }
 
   render() {
-    return (
-      <div className="language-toggle">
-        {this.renderLanguages()}
-      </div>
-    );
+    return <div className="language-toggle">{this.renderLanguages()}</div>;
   }
 }
 
