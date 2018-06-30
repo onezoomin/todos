@@ -16,6 +16,48 @@ import {
 } from '../../api/lists/methods.js';
 import { insert } from '../../api/todos/methods.js';
 
+import { Icon, Popover, Button, AutoComplete } from 'antd';
+const Option = AutoComplete.Option;
+
+class Complete extends React.Component {
+  state = {
+    allOptions: [],
+    filteredOptions: [],
+  };
+  constructor(props) {
+    super(props);
+    this.state = Object.assign(this.state, {
+      allOptions: this.props.allOptions,
+      filteredOptions: this.props.allOptions,
+    });
+  }
+  handleSearch = (value) => {
+    let filteredOptions;
+    filteredOptions = ['gmail.com', '163.com', 'qq.com'].map(
+      (domain) => `${value}@${domain}`
+    );
+
+    this.setState({ filteredOptions });
+  };
+
+  render() {
+    const { result } = this.state;
+    const Option = AutoComplete.Option;
+    const children = result.map((email) => {
+      return <Option key={email}>{email}</Option>;
+    });
+    return (
+      <AutoComplete
+        style={{ width: 200 }}
+        onSearch={this.handleSearch}
+        placeholder="input here"
+      >
+        {children}
+      </AutoComplete>
+    );
+  }
+}
+
 export default class ListHeader extends BaseComponent {
   constructor(props) {
     super(props);
@@ -70,16 +112,20 @@ export default class ListHeader extends BaseComponent {
 
   saveList() {
     this.setState({ editing: false });
-    updateName.call({
-      listId: this.props.list._id,
-      newName: this.listNameInput.value,
-    }, displayError);
+    updateName.call(
+      {
+        listId: this.props.list._id,
+        newName: this.listNameInput.value,
+      },
+      displayError
+    );
   }
 
   deleteList() {
     const { list } = this.props;
-    const message =
-      `${i18n.__('components.listHeader.deleteConfirm')} ${list.name}?`;
+    const message = `${i18n.__('components.listHeader.deleteConfirm')} ${
+      list.name
+    }?`;
 
     if (confirm(message)) {
       remove.call({ listId: list._id }, displayError);
@@ -100,10 +146,13 @@ export default class ListHeader extends BaseComponent {
     event.preventDefault();
     const input = this.newTodoInput;
     if (input.value.trim()) {
-      insert.call({
-        listId: this.props.list._id,
-        text: input.value,
-      }, displayError);
+      insert.call(
+        {
+          listId: this.props.list._id,
+          text: input.value,
+        },
+        displayError
+      );
       input.value = '';
     }
   }
@@ -113,7 +162,11 @@ export default class ListHeader extends BaseComponent {
   }
 
   renderDefaultHeader() {
-    const { list } = this.props;
+    const { list, todos } = this.props;
+    const Option = AutoComplete.Option;
+    const children = todos.map((eachTodo) => {
+      return <Option key={eachTodo._id}>{eachTodo.text}</Option>;
+    });
     return (
       <div>
         <MobileMenu menuOpen={this.props.menuOpen} />
@@ -131,13 +184,15 @@ export default class ListHeader extends BaseComponent {
               <option disabled value="default">
                 {i18n.__('components.listHeader.selectAction')}
               </option>
-              {list.userId ?
+              {list.userId ? (
                 <option value="public">
                   {i18n.__('components.listHeader.makePublic')}
-                </option> :
+                </option>
+              ) : (
                 <option value="private">
                   {i18n.__('components.listHeader.makePrivate')}
-                </option>}
+                </option>
+              )}
               <option value="delete">
                 {i18n.__('components.listHeader.delete')}
               </option>
@@ -145,16 +200,28 @@ export default class ListHeader extends BaseComponent {
             <span className="icon-cog" />
           </div>
           <div className="options-web">
+            <Popover
+              placement="left"
+              content={
+                <AutoComplete style={{ width: 200 }} placeholder="find a task">
+                  {children}
+                </AutoComplete>
+              }
+            >
+              <Icon className="filter-popover-icon" type="filter" />
+            </Popover>
             <a className="nav-item" onClick={this.toggleListPrivacy}>
-              {list.userId
-                ? <span
+              {list.userId ? (
+                <span
                   className="icon-lock"
                   title={i18n.__('components.listHeader.makeListPublic')}
                 />
-                : <span
+              ) : (
+                <span
                   className="icon-unlock"
                   title={i18n.__('components.listHeader.makeListPrivate')}
-                />}
+                />
+              )}
             </a>
             <a className="nav-item trash" onClick={this.deleteList}>
               <span
@@ -176,7 +243,9 @@ export default class ListHeader extends BaseComponent {
           type="text"
           name="name"
           autoComplete="off"
-          ref={(c) => { this.listNameInput = c; }}
+          ref={(c) => {
+            this.listNameInput = c;
+          }}
           defaultValue={list.name}
           onKeyUp={this.onListInputKeyUp}
           onBlur={this.onListInputBlur}
@@ -199,18 +268,22 @@ export default class ListHeader extends BaseComponent {
 
   render() {
     const { editing } = this.state;
-    return this.renderRedirect() || (
-      <nav className="list-header">
-        {editing ? this.renderEditingHeader() : this.renderDefaultHeader()}
-        <form className="todo-new input-symbol" onSubmit={this.createTodo}>
-          <input
-            type="text"
-            ref={(c) => { this.newTodoInput = c; }}
-            placeholder={i18n.__('components.listHeader.typeToAdd')}
-          />
-          <span className="icon-add" onClick={this.focusTodoInput} />
-        </form>
-      </nav>
+    return (
+      this.renderRedirect() || (
+        <nav className="list-header">
+          {editing ? this.renderEditingHeader() : this.renderDefaultHeader()}
+          <form className="todo-new input-symbol" onSubmit={this.createTodo}>
+            <input
+              type="text"
+              ref={(c) => {
+                this.newTodoInput = c;
+              }}
+              placeholder={i18n.__('components.listHeader.typeToAdd')}
+            />
+            <span className="icon-add" onClick={this.focusTodoInput} />
+          </form>
+        </nav>
+      )
     );
   }
 }
