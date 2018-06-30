@@ -194,9 +194,9 @@ export default class App extends Component {
             )}
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            Relies on
+            Relies on:&nbsp;
             <a href="https://ant.design/components/layout/#components-layout-demo-side">
-              Ant Design©
+              &nbsp; Ant Design©
             </a>
           </Footer>
         </Layout>
