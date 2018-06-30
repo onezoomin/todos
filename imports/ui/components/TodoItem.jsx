@@ -6,7 +6,7 @@ import i18n from 'meteor/universe:i18n';
 import BaseComponent from './BaseComponent.jsx';
 import { displayError } from '../helpers/errors.js';
 
-import { Icon } from 'antd';
+import { Icon, Popover, Button } from 'antd';
 
 import {
   setCheckedStatus,
@@ -87,13 +87,23 @@ export default class TodoItem extends BaseComponent {
           onBlur={this.onBlur}
           onChange={this.updateTodo}
         />
-        <Icon
-          className="delete-item"
-          type="delete"
-          href="#delete"
-          onClick={this.deleteTodo}
-          onMouseDown={this.deleteTodo}
-        />
+        <Popover
+          placement="left"
+          content={
+            <Button
+              className="delete-item"
+              type="danger"
+              icon="delete"
+              href="#delete"
+              onClick={this.deleteTodo}
+              onMouseDown={this.deleteTodo}
+            >
+              {i18n.__('components.todoItem.deleteItem')}
+            </Button>
+          }
+        >
+          <Icon className="delete-item" type="delete" href="#delete" />
+        </Popover>
       </div>
     );
   }
