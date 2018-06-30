@@ -5,14 +5,21 @@ import { Accounts } from 'meteor/accounts-base';
 import i18n from 'meteor/universe:i18n';
 import BaseComponent from '../components/BaseComponent.jsx';
 import { withRouter } from 'react-router-dom';
-
+import { Button } from '@blueprintjs/core';
 import AuthPage from './AuthPage.jsx';
+import { ReactiveVar } from 'meteor/reactive-var';
+
+const isJoinLockedRV = new ReactiveVar(false); // will persist over internal app page nav, but not survive browser refresh
 
 class JoinPage extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = Object.assign(this.state, { errors: {} });
+    this.state = Object.assign(this.state, {
+      isJoinLocked: isJoinLockedRV.get(),
+      errors: {},
+    });
     this.onSubmit = this.onSubmit.bind(this);
+    this.isJoinLockedRV = isJoinLockedRV;
   }
 
   onSubmit(event) {
@@ -54,7 +61,12 @@ class JoinPage extends BaseComponent {
       }
     );
   }
-
+  toggleLocked = () => {
+    this.isJoinLockedRV.set(!this.isJoinLockedRV.get());
+    this.setState({
+      isJoinLocked: !this.state.isJoinLocked,
+    });
+  };
   render() {
     const { errors } = this.state;
     const errorMessages = Object.keys(errors).map((key) => errors[key]);
@@ -116,17 +128,39 @@ class JoinPage extends BaseComponent {
               title={i18n.__('pages.authPageJoin.confirmPassword')}
             />
           </div>
-          <button type="submit" className="btn-primary">
-            {i18n.__('pages.authPageJoin.joinNow')}
+          <button
+            disabled={this.state.isJoinLocked}
+            type="submit"
+            className="btn-primary"
+          >
+            {this.state.isJoinLocked
+              ? 'Joining Currently Disabled'
+              : i18n.__('pages.authPageJoin.joinNow')}
           </button>
         </form>
       </div>
     );
+    let isLoggedIn = Meteor.user() != undefined;
 
+    console.log(this.isJoinLockedRV);
+    const disbleJoin = !isLoggedIn ? (
+      ''
+    ) : (
+      <Button
+        className="joinLockButton"
+        icon={this.state.isJoinLocked ? 'lock' : 'unlock'}
+        text={this.state.isJoinLocked ? 'Unlock Joins' : 'Lock Joins'}
+        onClick={this.toggleLocked}
+      />
+    );
     const link = (
-      <Link to="/signin" className="link-auth-alt">
-        {i18n.__('pages.authPageJoin.haveAccountSignIn')}
-      </Link>
+      <div>
+        <Link to="/signin" className="link-auth-alt">
+          {i18n.__('pages.authPageJoin.haveAccountSignIn')}
+        </Link>
+        <br />
+        {disbleJoin}
+      </div>
     );
 
     return (

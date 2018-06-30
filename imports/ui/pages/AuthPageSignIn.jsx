@@ -6,7 +6,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import BaseComponent from '../components/BaseComponent.jsx';
 import { withRouter } from 'react-router-dom';
-
 import AuthPage from './AuthPage.jsx';
 
 class SignInPage extends BaseComponent {
@@ -39,8 +38,6 @@ class SignInPage extends BaseComponent {
           errors: { none: err.reason },
         });
       } else {
-        //this.redirectTo('/');
-        //console.log('should Redirect');
         this.props.history.push('/');
       }
     });
