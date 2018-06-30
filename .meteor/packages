@@ -12,7 +12,7 @@ tracker@1.2.0
 # standard libraries
 jquery@1.11.10
 underscore@1.0.10
-less@2.7.12
+less@2.8.0-beta171.10
 
 # ui
 react-meteor-data
@@ -57,11 +57,11 @@ shell-server@0.3.1
 
 # security
 audit-argument-checks@1.0.7
-dynamic-import@0.4.0
+dynamic-import@0.5.0-beta171.10
 reactive-var@1.0.11
 aldeed:collection2@3.0.0
 aldeed:schema-deny
 aldeed:schema-index
-ecmascript
-es5-shim
+ecmascript@0.12.0-beta171.10
+es5-shim@4.8.0
 static-html
