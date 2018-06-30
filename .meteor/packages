@@ -65,3 +65,4 @@ aldeed:schema-index
 ecmascript
 es5-shim
 static-html
+session

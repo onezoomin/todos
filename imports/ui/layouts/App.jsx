@@ -31,6 +31,10 @@ import {
   MenuItem,
   Breadcrumb,
   Icon,
+  Intent,
+  Popover,
+  PopoverInteractionKind,
+  Position,
 } from '@blueprintjs/core';
 
 // import { Layout } from 'antd';
@@ -113,51 +117,52 @@ export default class App extends Component {
     };
     return (
       <div style={{ minHeight: '100vh' }}>
-        <Navbar>
-          <Menu
-            theme="dark"
-            defaultSelectedKeys={['1']}
-            mode="inline"
-            defaultOpenKeys={['sub1']}
-          >
-            <MenuItem key="0">
-              <Icon
-                style={{ fontSize: '150%' }}
-                className="trigger"
-                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                onClick={this.toggle}
+        <Navbar className="pt-dark">
+          <NavbarGroup align={Alignment.LEFT}>
+            <NavbarHeading>Blueprint Navbar</NavbarHeading>
+            <NavbarDivider />
+            <Button
+              className="pt-minimal"
+              style={{ fontSize: '150%' }}
+              className="trigger"
+              icon={this.state.collapsed ? 'menu-open' : 'menu-closed'}
+              onClick={this.toggle}
+            />
+
+            <Popover
+              content={<LanguageToggle style={{ paddingLeft: '36px' }} />}
+              enforceFocus={false}
+              position={Position.BOTTOM_LEFT}
+              interactionKind={PopoverInteractionKind.CLICK}
+            >
+              <Button
+                icon="globe"
+                text={this.state.collapsed ? '' : 'Language'}
               />
-              <span>Close Sidebar</span>
-            </MenuItem>
-            <MenuItem key="1">
-              <Icon type="global" />
-              <span>
-                <LanguageToggle style={{ paddingLeft: '36px' }} />
-              </span>
-            </MenuItem>
-            <MenuItem
-              key="sub0"
-              title={
-                <span>
-                  <Icon type="user" />
-                  <span>User</span>
-                </span>
-              }
+            </Popover>
+            <Popover
+              content={<UserMenu user={user} logout={this.logout} />}
+              enforceFocus={false}
+              position={Position.BOTTOM_LEFT}
+              interactionKind={PopoverInteractionKind.CLICK}
             >
-              <UserMenu user={user} logout={this.logout} />
-            </MenuItem>
-            <MenuItem
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="check-square-o" />
-                  <span>Lists</span>
-                </span>
-              }
+              <Button
+                icon="mugshot"
+                text={this.state.collapsed ? '' : 'User'}
+              />
+            </Popover>
+            <Popover
+              enforceFocus={false}
+              position={Position.BOTTOM_LEFT}
+              interactionKind={PopoverInteractionKind.CLICK}
+              content={<ListList lists={lists} />}
             >
-              <ListList lists={lists} />
-            </MenuItem>
-          </Menu>
+              <Button
+                icon="tick-circle"
+                text={this.state.collapsed ? '' : 'Lists'}
+              />
+            </Popover>
+          </NavbarGroup>
         </Navbar>
         <div>
           <div style={{ margin: '0' }}>
@@ -201,8 +206,15 @@ export default class App extends Component {
               </TransitionGroup>
             )}
           </div>
-          <div style={{ textAlign: 'center' }}>
-            Relies on
+          <div
+            style={{
+              textAlign: 'center',
+              position: 'fixed',
+              width: '100%',
+              bottom: 0,
+            }}
+          >
+            Relies on:
             <a href="http://blueprintjs.com/">blueprintjs</a>
           </div>
         </div>

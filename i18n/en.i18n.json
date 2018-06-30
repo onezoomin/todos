@@ -32,7 +32,8 @@
       "showMenu": "Show Menu"
     },
     "todoItem": {
-      "taskName": "Task name"
+      "taskName": "Task name",
+      "deleteTask": "Remove"
     }
   },
   "pages": {
@@ -99,7 +100,8 @@
         "accessDenied": "Cannot edit todos in a private list that is not yours"
       },
       "remove": {
-        "accessDenied": "Cannot remove todos in a private list that is not yours"
+        "accessDenied":
+          "Cannot remove todos in a private list that is not yours"
       },
       "item": {
         "taskName": "Task name"

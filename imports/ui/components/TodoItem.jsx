@@ -6,7 +6,13 @@ import i18n from 'meteor/universe:i18n';
 import BaseComponent from './BaseComponent.jsx';
 import { displayError } from '../helpers/errors.js';
 
-import { Icon } from '@blueprintjs/core';
+import {
+  Button,
+  Popover,
+  Icon,
+  Position,
+  PopoverInteractionKind,
+} from '@blueprintjs/core';
 
 import {
   setCheckedStatus,
@@ -40,7 +46,13 @@ export default class TodoItem extends BaseComponent {
     this.props.onEditingChange(this.props.todo._id, true);
   }
 
-  onBlur() {
+  onBlur(event) {
+    console.log(event);
+    let blurTest = $(event.relatedTarget)
+      .children()
+      .first()
+      .hasClass('deletePopover');
+    if (blurTest) return;
     this.props.onEditingChange(this.props.todo._id, false);
   }
 
@@ -87,13 +99,25 @@ export default class TodoItem extends BaseComponent {
           onBlur={this.onBlur}
           onChange={this.updateTodo}
         />
-        <Icon
-          className="delete-item"
-          icon="delete"
-          href="#delete"
-          onClick={this.deleteTodo}
-          onMouseDown={this.deleteTodo}
-        />
+        <Popover
+          className="deletePopover"
+          popoverClassName="pt-dark deletePopover"
+          enforceFocus={true}
+          position={Position.LEFT}
+          interactionKind={PopoverInteractionKind.HOVER}
+          content={
+            <Button
+              className="pt-dark pt-popover-dismiss"
+              href="#delete"
+              icon="delete"
+              text={i18n.__('components.todoItem.deleteTask')}
+              onClick={this.deleteTodo}
+              onMouseDown={this.deleteTodo}
+            />
+          }
+        >
+          <Icon className="delete-item pt-light" icon="delete" />
+        </Popover>
       </div>
     );
   }
