@@ -22,12 +22,7 @@ export default class ListPage extends BaseComponent {
   }
 
   render() {
-    const {
-      list,
-      listExists,
-      loading,
-      todos,
-    } = this.props;
+    const { list, listExists, loading, todos } = this.props;
     const { editingTodo } = this.state;
 
     if (!listExists) {
@@ -43,7 +38,7 @@ export default class ListPage extends BaseComponent {
         />
       );
     } else {
-      Todos = todos.map(todo => (
+      Todos = todos.map((todo) => (
         <TodoItem
           todo={todo}
           key={todo._id}
@@ -55,11 +50,13 @@ export default class ListPage extends BaseComponent {
 
     return (
       <div className="page lists-show">
-        <ListHeader list={list} menuOpen={this.props.menuOpen} />
+        <ListHeader list={list} todos={todos} menuOpen={this.props.menuOpen} />
         <div className="content-scrollable list-items">
-          {loading
-            ? <Message title={i18n.__('pages.listPage.loading')} />
-            : Todos}
+          {loading ? (
+            <Message title={i18n.__('pages.listPage.loading')} />
+          ) : (
+            Todos
+          )}
         </div>
       </div>
     );
