@@ -32,7 +32,8 @@
       "showMenu": "Afficher le menu"
     },
     "todoItem": {
-      "taskName": "Nom de la tâche"
+      "taskName": "Nom de la tâche",
+      "deleteItem": "Removez-vous?"
     }
   },
   "pages": {
@@ -74,7 +75,8 @@
       },
       "makePrivate": {
         "notLoggedIn": "Doit être connecté pour réaliser des listes privées.",
-        "lastPublicList": "Vous ne pouvez pas faire la dernière liste publique privée."
+        "lastPublicList":
+          "Vous ne pouvez pas faire la dernière liste publique privée."
       },
       "makePublic": {
         "notLoggedIn": "Doit être connecté.",
@@ -85,21 +87,26 @@
       },
       "remove": {
         "accessDenied": "'Vous n'êtes pas autorisé à supprimer cette liste.'",
-        "lastPublicList": "Vous ne pouvez pas supprimer la dernière liste publique."
+        "lastPublicList":
+          "Vous ne pouvez pas supprimer la dernière liste publique."
       }
     },
     "todos": {
       "insert": {
-        "accessDenied": "Vous ne pouvez pas ajouter todo à une liste privée qui ne vous appartient pas"
+        "accessDenied":
+          "Vous ne pouvez pas ajouter todo à une liste privée qui ne vous appartient pas"
       },
       "setCheckedStatus": {
-        "accessDenied": "Vous ne pouvez pas modifier todos dans une liste privée qui ne vous appartient pas"
+        "accessDenied":
+          "Vous ne pouvez pas modifier todos dans une liste privée qui ne vous appartient pas"
       },
       "updateText": {
-        "accessDenied": "Vous ne pouvez pas modifier todos dans une liste privée qui ne vous appartient pas"
+        "accessDenied":
+          "Vous ne pouvez pas modifier todos dans une liste privée qui ne vous appartient pas"
       },
       "remove": {
-        "accessDenied": "Vous ne pouvez pas supprimer todos dans une liste privée qui ne vous appartient pas"
+        "accessDenied":
+          "Vous ne pouvez pas supprimer todos dans une liste privée qui ne vous appartient pas"
       },
       "item": {
         "taskName": "Nom de la tâche"
