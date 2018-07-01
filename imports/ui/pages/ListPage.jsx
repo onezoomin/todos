@@ -22,16 +22,11 @@ export default class ListPage extends BaseComponent {
   }
 
   render() {
-    const {
-      list,
-      listExists,
-      loading,
-      todos,
-    } = this.props;
+    const { list, listExists, loading, todos } = this.props;
     const { editingTodo } = this.state;
 
     if (!listExists) {
-      return <NotFoundPage menuOpen={this.props.menuOpen} />;
+      return <NotFoundPage openSidebar={this.props.openSidebar} />;
     }
 
     let Todos;
@@ -43,7 +38,7 @@ export default class ListPage extends BaseComponent {
         />
       );
     } else {
-      Todos = todos.map(todo => (
+      Todos = todos.map((todo) => (
         <TodoItem
           todo={todo}
           key={todo._id}
@@ -55,11 +50,13 @@ export default class ListPage extends BaseComponent {
 
     return (
       <div className="page lists-show">
-        <ListHeader list={list} menuOpen={this.props.menuOpen} />
+        <ListHeader list={list} openSidebar={this.props.openSidebar} />
         <div className="content-scrollable list-items">
-          {loading
-            ? <Message title={i18n.__('pages.listPage.loading')} />
-            : Todos}
+          {loading ? (
+            <Message title={i18n.__('pages.listPage.loading')} />
+          ) : (
+            Todos
+          )}
         </div>
       </div>
     );
@@ -71,5 +68,5 @@ ListPage.propTypes = {
   todos: PropTypes.array,
   loading: PropTypes.bool,
   listExists: PropTypes.bool,
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };

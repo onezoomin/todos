@@ -134,7 +134,7 @@ class JoinPage extends BaseComponent {
         <AuthPage
           content={content}
           link={link}
-          menuOpen={this.props.menuOpen}
+          openSidebar={this.props.openSidebar}
         />
       )
     );
@@ -142,7 +142,7 @@ class JoinPage extends BaseComponent {
 }
 
 JoinPage.propTypes = {
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };
 
 export default withRouter(JoinPage);

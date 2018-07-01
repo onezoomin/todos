@@ -6,7 +6,7 @@ import i18n from 'meteor/universe:i18n';
 import BaseComponent from './BaseComponent.jsx';
 import { displayError } from '../helpers/errors.js';
 
-import { Icon } from 'antd';
+import { Icon } from 'semantic-ui-react';
 
 import {
   setCheckedStatus,
@@ -89,7 +89,7 @@ export default class TodoItem extends BaseComponent {
         />
         <Icon
           className="delete-item"
-          type="delete"
+          name="delete"
           href="#delete"
           onClick={this.deleteTodo}
           onMouseDown={this.deleteTodo}

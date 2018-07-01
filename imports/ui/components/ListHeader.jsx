@@ -70,16 +70,20 @@ export default class ListHeader extends BaseComponent {
 
   saveList() {
     this.setState({ editing: false });
-    updateName.call({
-      listId: this.props.list._id,
-      newName: this.listNameInput.value,
-    }, displayError);
+    updateName.call(
+      {
+        listId: this.props.list._id,
+        newName: this.listNameInput.value,
+      },
+      displayError
+    );
   }
 
   deleteList() {
     const { list } = this.props;
-    const message =
-      `${i18n.__('components.listHeader.deleteConfirm')} ${list.name}?`;
+    const message = `${i18n.__('components.listHeader.deleteConfirm')} ${
+      list.name
+    }?`;
 
     if (confirm(message)) {
       remove.call({ listId: list._id }, displayError);
@@ -100,10 +104,13 @@ export default class ListHeader extends BaseComponent {
     event.preventDefault();
     const input = this.newTodoInput;
     if (input.value.trim()) {
-      insert.call({
-        listId: this.props.list._id,
-        text: input.value,
-      }, displayError);
+      insert.call(
+        {
+          listId: this.props.list._id,
+          text: input.value,
+        },
+        displayError
+      );
       input.value = '';
     }
   }
@@ -116,7 +123,7 @@ export default class ListHeader extends BaseComponent {
     const { list } = this.props;
     return (
       <div>
-        <MobileMenu menuOpen={this.props.menuOpen} />
+        <MobileMenu openSidebar={this.props.openSidebar} />
         <h1 className="title-page" onClick={this.editList}>
           <span className="title-wrapper">{list.name}</span>
           <span className="count-list">{list.incompleteCount}</span>
@@ -131,13 +138,15 @@ export default class ListHeader extends BaseComponent {
               <option disabled value="default">
                 {i18n.__('components.listHeader.selectAction')}
               </option>
-              {list.userId ?
+              {list.userId ? (
                 <option value="public">
                   {i18n.__('components.listHeader.makePublic')}
-                </option> :
+                </option>
+              ) : (
                 <option value="private">
                   {i18n.__('components.listHeader.makePrivate')}
-                </option>}
+                </option>
+              )}
               <option value="delete">
                 {i18n.__('components.listHeader.delete')}
               </option>
@@ -146,15 +155,17 @@ export default class ListHeader extends BaseComponent {
           </div>
           <div className="options-web">
             <a className="nav-item" onClick={this.toggleListPrivacy}>
-              {list.userId
-                ? <span
+              {list.userId ? (
+                <span
                   className="icon-lock"
                   title={i18n.__('components.listHeader.makeListPublic')}
                 />
-                : <span
+              ) : (
+                <span
                   className="icon-unlock"
                   title={i18n.__('components.listHeader.makeListPrivate')}
-                />}
+                />
+              )}
             </a>
             <a className="nav-item trash" onClick={this.deleteList}>
               <span
@@ -176,7 +187,9 @@ export default class ListHeader extends BaseComponent {
           type="text"
           name="name"
           autoComplete="off"
-          ref={(c) => { this.listNameInput = c; }}
+          ref={(c) => {
+            this.listNameInput = c;
+          }}
           defaultValue={list.name}
           onKeyUp={this.onListInputKeyUp}
           onBlur={this.onListInputBlur}
@@ -199,23 +212,27 @@ export default class ListHeader extends BaseComponent {
 
   render() {
     const { editing } = this.state;
-    return this.renderRedirect() || (
-      <nav className="list-header">
-        {editing ? this.renderEditingHeader() : this.renderDefaultHeader()}
-        <form className="todo-new input-symbol" onSubmit={this.createTodo}>
-          <input
-            type="text"
-            ref={(c) => { this.newTodoInput = c; }}
-            placeholder={i18n.__('components.listHeader.typeToAdd')}
-          />
-          <span className="icon-add" onClick={this.focusTodoInput} />
-        </form>
-      </nav>
+    return (
+      this.renderRedirect() || (
+        <nav className="list-header">
+          {editing ? this.renderEditingHeader() : this.renderDefaultHeader()}
+          <form className="todo-new input-symbol" onSubmit={this.createTodo}>
+            <input
+              type="text"
+              ref={(c) => {
+                this.newTodoInput = c;
+              }}
+              placeholder={i18n.__('components.listHeader.typeToAdd')}
+            />
+            <span className="icon-add" onClick={this.focusTodoInput} />
+          </form>
+        </nav>
+      )
     );
   }
 }
 
 ListHeader.propTypes = {
   list: PropTypes.object,
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };

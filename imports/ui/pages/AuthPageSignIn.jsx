@@ -111,7 +111,7 @@ class SignInPage extends BaseComponent {
         <AuthPage
           content={content}
           link={link}
-          menuOpen={this.props.menuOpen}
+          openSidebar={this.props.openSidebar}
         />
       )
     );
@@ -119,7 +119,7 @@ class SignInPage extends BaseComponent {
 }
 
 SignInPage.propTypes = {
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };
 
 export default withRouter(SignInPage);

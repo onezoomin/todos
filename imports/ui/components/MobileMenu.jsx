@@ -6,17 +6,20 @@ import BaseComponent from './BaseComponent.jsx';
 class MobileMenu extends BaseComponent {
   constructor(props) {
     super(props);
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.openSidebar = this.openSidebar.bind(this);
   }
 
-  toggleMenu() {
-    this.props.menuOpen.set(!this.props.menuOpen.get());
+  openSidebar(event) {
+    event.preventDefault();
+    this.setState(function() {
+      this.props.openSidebar();
+    });
   }
 
   render() {
     return (
       <div className="nav-group">
-        <a href="#toggle-menu" className="nav-item" onClick={this.toggleMenu}>
+        <a href="#toggle-menu" className="nav-item" onClick={this.openSidebar}>
           <span
             className="icon-list-unordered"
             title={i18n.__('components.mobileMenu.showMenu')}
@@ -28,7 +31,7 @@ class MobileMenu extends BaseComponent {
 }
 
 MobileMenu.propTypes = {
-  menuOpen: PropTypes.object.isRequired,
+  // openSidebar: PropTypes.func.isRequired,
 };
 
 export default MobileMenu;

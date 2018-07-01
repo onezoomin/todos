@@ -10,7 +10,7 @@ class NotFoundPage extends BaseComponent {
     return (
       <div className="page not-found">
         <nav>
-          <MobileMenu menuOpen={this.props.menuOpen} />
+          <MobileMenu openSidebar={this.props.openSidebar} />
         </nav>
         <div className="content-scrollable">
           <Message title={i18n.__('pages.notFoundPage.pageNotFound')} />
@@ -21,7 +21,7 @@ class NotFoundPage extends BaseComponent {
 }
 
 NotFoundPage.propTypes = {
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };
 
 export default NotFoundPage;

@@ -4,6 +4,16 @@ import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Meteor } from 'meteor/meteor';
 
+import {
+  Button,
+  Header,
+  Icon,
+  Image,
+  Menu,
+  Segment,
+  Sidebar,
+} from 'semantic-ui-react';
+
 import { Lists } from '../../api/lists/lists.js';
 import UserMenu from '../components/UserMenu.jsx';
 import ListList from '../components/ListList.jsx';
@@ -17,11 +27,6 @@ import NotFoundPage from '../pages/NotFoundPage.jsx';
 import ListHeader from '../components/ListHeader.jsx';
 
 const CONNECTION_ISSUE_TIMEOUT = 5000;
-
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
 export default class App extends Component {
   static getDerivedStateFromProps(nextProps) {
@@ -41,10 +46,11 @@ export default class App extends Component {
       showConnectionIssue: false,
       defaultList: null,
       redirectTo: null,
+      sidebarVisible: false,
     };
-    // this.toggleMenu = this.toggleMenu.bind(this);
-    // this.closeMenu = this.toggleMenu.bind(this, false);
     this.logout = this.logout.bind(this);
+    this.openSidebar = this.openSidebar.bind(this);
+    this.closeSidebar = this.closeSidebar.bind(this);
   }
 
   componentDidMount() {
@@ -54,14 +60,16 @@ export default class App extends Component {
     }, CONNECTION_ISSUE_TIMEOUT);
   }
 
-  // toggleMenu() {
-  //   this.props.menuOpen.set(!this.props.menuOpen.get());
-  // }
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
+  openSidebar() {
+    this.setState({ sidebarVisible: true });
+  }
+
+  closeSidebar(event) {
+    if (event != null) {
+      event.preventDefault();
+    }
+    this.setState({ sidebarVisible: false });
+  }
 
   logout() {
     Meteor.logout();
@@ -81,126 +89,98 @@ export default class App extends Component {
     }
     return redirect;
   }
-  state = {
-    collapsed: false,
-  };
-
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
-    this.setState({ collapsed });
-  };
 
   renderContent(location) {
-    const { user, connected, lists, menuOpen, loading } = this.props;
+    const { user, connected, lists, loading } = this.props;
     const { showConnectionIssue } = this.state;
 
     const commonChildProps = {
-      menuOpen: this.props.menuOpen,
+      // sidebarVisible: this.state.sidebarVisible,
     };
+
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider
-          width="300px"
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}
-          onCollapse={this.onCollapse}
-        >
-          <Menu
-            theme="dark"
-            defaultSelectedKeys={['1']}
-            mode="inline"
-            defaultOpenKeys={['sub1']}
+      <div style={{ height: '100vh' }}>
+        <Sidebar.Pushable as={Segment}>
+          <Sidebar
+            as={Menu}
+            animation="push"
+            direction="left"
+            icon="labeled"
+            inverted
+            onHide={this.closeSidebar}
+            vertical
+            visible={this.state.sidebarVisible}
+            width="thin"
           >
-            <Menu.Item key="0">
-              <Icon
-                style={{ fontSize: '150%' }}
-                className="trigger"
-                type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                onClick={this.toggle}
-              />
-              <span>Close Sidebar</span>
+            <Menu.Item as="a" onClick={this.closeSidebar}>
+              <Icon name="arrow left" />
             </Menu.Item>
-            <Menu.Item key="1">
+            <Menu.Item>
               <Icon type="global" />
               <span>
                 <LanguageToggle style={{ paddingLeft: '36px' }} />
               </span>
             </Menu.Item>
-            <SubMenu
-              key="sub0"
-              title={
-                <span>
-                  <Icon type="user" />
-                  <span>User</span>
-                </span>
-              }
-            >
+            <Menu.Item>
               <UserMenu user={user} logout={this.logout} />
-            </SubMenu>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="check-square-o" />
-                  <span>Lists</span>
-                </span>
-              }
-            >
+            </Menu.Item>
+            <Menu.Item>
               <ListList lists={lists} />
-            </SubMenu>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Content style={{ margin: '0' }}>
-            {showConnectionIssue && !connected ? (
-              <ConnectionNotification />
-            ) : null}
-            <div className="content-overlay" onClick={this.closeMenu} />
-            {loading ? (
-              <Loading key="loading" />
-            ) : (
-              <TransitionGroup>
-                <CSSTransition
-                  key={location.key}
-                  classNames="fade"
-                  timeout={200}
-                >
-                  <Switch location={location}>
-                    <Route
-                      path="/lists/:id"
-                      render={({ match }) => (
-                        <ListPageContainer
-                          match={match}
-                          {...commonChildProps}
-                        />
-                      )}
-                    />
-                    <Route
-                      path="/signin"
-                      render={() => <AuthPageSignIn {...commonChildProps} />}
-                    />
-                    <Route
-                      path="/join"
-                      render={() => <AuthPageJoin {...commonChildProps} />}
-                    />
-                    <Route
-                      path="/*"
-                      render={() => <NotFoundPage {...commonChildProps} />}
-                    />
-                  </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-            )}
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Relies on
-            <a href="https://ant.design/components/layout/#components-layout-demo-side">
-              Ant Design©
-            </a>
-          </Footer>
-        </Layout>
-      </Layout>
+            </Menu.Item>
+          </Sidebar>
+
+          <Sidebar.Pusher dimmed={this.state.sidebarVisible}>
+            <Segment basic>
+              {showConnectionIssue && !connected ? (
+                <ConnectionNotification />
+              ) : null}
+              {loading ? (
+                <Loading key="loading" />
+              ) : (
+                <Switch location={location}>
+                  <Route
+                    path="/lists/:id"
+                    render={({ match }) => (
+                      <ListPageContainer
+                        match={match}
+                        {...commonChildProps}
+                        openSidebar={this.openSidebar}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/signin"
+                    render={() => (
+                      <AuthPageSignIn
+                        {...commonChildProps}
+                        openSidebar={this.openSidebar}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/join"
+                    render={() => (
+                      <AuthPageJoin
+                        {...commonChildProps}
+                        openSidebar={this.openSidebar}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/*"
+                    render={() => (
+                      <NotFoundPage
+                        {...commonChildProps}
+                        openSidebar={this.openSidebar}
+                      />
+                    )}
+                  />
+                </Switch>
+              )}
+            </Segment>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      </div>
     );
   }
 
@@ -224,8 +204,6 @@ App.propTypes = {
   connected: PropTypes.bool.isRequired,
   // subscription status
   loading: PropTypes.bool.isRequired,
-  // is side menu open?
-  menuOpen: PropTypes.object.isRequired,
   // all lists visible to the current user
   lists: PropTypes.array,
 };

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import MobileMenu from '../components/MobileMenu.jsx';
 
 // a common layout wrapper for auth pages
-const AuthPage = ({ content, link, menuOpen }) => (
+const AuthPage = ({ content, link, openSidebar }) => (
   <div className="page auth">
     <nav>
-      <MobileMenu menuOpen={menuOpen} />
+      <MobileMenu openSidebar={openSidebar} />
     </nav>
     <div className="content-scrollable">
       {content}
@@ -18,7 +18,7 @@ const AuthPage = ({ content, link, menuOpen }) => (
 AuthPage.propTypes = {
   content: PropTypes.element.isRequired,
   link: PropTypes.element.isRequired,
-  menuOpen: PropTypes.object.isRequired,
+  openSidebar: PropTypes.func.isRequired,
 };
 
 export default AuthPage;
