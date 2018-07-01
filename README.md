@@ -2,14 +2,14 @@
 This is a Fork of the meteor/todos example app.
 
 We focus on making [unique branches](https://github.com/onezoomin/todos/branches) for specific [`react`](https://github.com/meteor/todos/tree/react) based ui frameworks:
-- [ ] [Ant-Design](https://ant.design)
-- [ ] [Semantic-UI](https://react.semantic-ui.com/)
+- [x] [Ant-Design](https://ant.design)
+- [x] [Semantic-UI](https://react.semantic-ui.com/)
 
-[![Circle CI](https://circleci.com/gh/meteor/todos.svg?style=svg)](https://circleci.com/gh/meteor/todos)
+
 
 ## Versions
 
-This version (the `master`) branch uses the [Blaze](http://guide.meteor.com/blaze.html) rendering library, with code written in ES2015 JavaScript.
+This version (the `master`) branch uses the [Blaze](http://guide.meteor.com/blaze.html) rendering library, with code written in ES2015 JavaScript. [![Circle CI](https://circleci.com/gh/meteor/todos.svg?style=svg)](https://circleci.com/gh/meteor/todos)
 
 The [`react`](https://github.com/meteor/todos/tree/react) branch implements the same application using [React](http://guide.meteor.com/react.html)
 
