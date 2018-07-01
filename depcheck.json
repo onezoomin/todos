@@ -1,0 +1,145 @@
+{
+  "dependencies": [
+    "@babel/runtime",
+    "immutable",
+    "objectmodel",
+    "react-addons-pure-render-mixin"
+  ],
+  "devDependencies": ["babel-plugin-import", "meteor-node-stubs", "shelljs"],
+  "missing": {},
+  "using": {
+    "babel-eslint": ["/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"],
+    "eslint-plugin-react": ["/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"],
+    "eslint-plugin-meteor": ["/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"],
+    "eslint-plugin-jsx-a11y": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"
+    ],
+    "eslint-config-plugin:meteor": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"
+    ],
+    "eslint-config-plugin:jsx-a11y": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/.eslintrc"
+    ],
+    "meteor": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/client/main.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/generate-data.app-tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/languages/methods.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/lists.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/methods.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/server/publications.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/incompleteCountDenormalizer.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/methods.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/server/publications.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/todos.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/startup/server/fixtures.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/startup/server/reset-password-email.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/startup/server/security.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/BaseComponent.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ConnectionNotification.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/LanguageToggle.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListList.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/Loading.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/MobileMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/UserMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/containers/AppContainer.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/containers/ListPageContainer.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/helpers/errors.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageJoin.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageSignIn.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/ListPage.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/NotFoundPage.jsx"
+    ],
+    "react": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/client/main.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/BaseComponent.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ConnectionNotification.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/LanguageToggle.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListList.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/Loading.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/Message.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/MobileMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/UserMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPage.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageJoin.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageSignIn.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/ListPage.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/NotFoundPage.jsx"
+    ],
+    "react-dom": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/client/main.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx"
+    ],
+    "simpl-schema": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/lists.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/methods.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/methods.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/server/publications.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/todos.js"
+    ],
+    "faker": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/todos.js"
+    ],
+    "react-router-dom": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/BaseComponent.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListList.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/UserMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageJoin.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageSignIn.jsx"
+    ],
+    "prop-types": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListList.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/Message.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/MobileMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/UserMenu.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPage.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageJoin.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/AuthPageSignIn.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/ListPage.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/pages/NotFoundPage.jsx"
+    ],
+    "antd": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx"
+    ],
+    "enzyme": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.tests.js"
+    ],
+    "enzyme-adapter-react-16": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/ListHeader.tests.js",
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.tests.js"
+    ],
+    "classnames": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/components/TodoItem.jsx"
+    ],
+    "react-transition-group": [
+      "/Volumes/SYNC/SyncDocs/www/todo-react/imports/ui/layouts/App.jsx"
+    ]
+  },
+  "invalidFiles": {
+    "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/lists/lists.tests.js":
+      "SyntaxError: 'import' and 'export' may only appear at the top level (18:2)\n    at Parser.pp$5.raise (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:4454:13)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1877:16)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)\n    at Parser.pp$1.parseBlockBody (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2268:21)\n    at Parser.pp$1.parseBlock (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2247:8)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1868:19)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)\n    at Parser.pp$1.parseIfStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2059:26)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1846:19)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)",
+    "/Volumes/SYNC/SyncDocs/www/todo-react/imports/api/todos/todos.tests.js":
+      "SyntaxError: 'import' and 'export' may only appear at the top level (14:2)\n    at Parser.pp$5.raise (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:4454:13)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1877:16)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)\n    at Parser.pp$1.parseBlockBody (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2268:21)\n    at Parser.pp$1.parseBlock (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2247:8)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1868:19)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)\n    at Parser.pp$1.parseIfStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:2059:26)\n    at Parser.pp$1.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:1846:19)\n    at Parser.parseStatement (/Users/gotjosh/.meteor/packages/meteor-tool/.1.7.1-beta.10.4bvpse.mp9em++os.osx.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/depcheck/node_modules/babylon/lib/index.js:5910:22)"
+  },
+  "invalidDirs": {}
+}
