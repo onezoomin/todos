@@ -1,6 +1,11 @@
-[![Circle CI](https://circleci.com/gh/meteor/todos.svg?style=svg)](https://circleci.com/gh/meteor/todos)
 
-This is a Todos example app built on the principles described in the [Meteor Guide](http://guide.meteor.com/structure.html). 
+This is a Fork of the meteor/todos example app.
+
+We focus on making [unique branches](https://github.com/onezoomin/todos/branches) for specific [`react`](https://github.com/meteor/todos/tree/react) based ui frameworks:
+- [ ] [Ant-Design](https://ant.design)
+- [ ] [Semantic-UI](https://react.semantic-ui.com/)
+
+[![Circle CI](https://circleci.com/gh/meteor/todos.svg?style=svg)](https://circleci.com/gh/meteor/todos)
 
 ## Versions
 
@@ -15,7 +20,9 @@ Note that attempts will be made to keep the branches up to date but this isn't g
 ### Running the app
 
 ```bash
-meteor npm install
+meteor yarn install (or meteor npm install)
+meteor yarn update (or meteor nom update)
+meteor update
 meteor
 ```
 
