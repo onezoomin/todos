@@ -165,7 +165,11 @@ export default class ListHeader extends BaseComponent {
     const { list, todos } = this.props;
     const Option = AutoComplete.Option;
     const children = todos.map((eachTodo) => {
-      return <Option key={eachTodo._id}>{eachTodo.text}</Option>;
+      return (
+        <Option key={eachTodo.text} value={eachTodo._id}>
+          {eachTodo.text}
+        </Option>
+      );
     });
     return (
       <div>
