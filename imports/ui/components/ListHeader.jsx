@@ -174,7 +174,13 @@ export default class ListHeader extends BaseComponent {
     return (
       <div>
         <MobileMenu menuOpen={this.props.menuOpen} />
-        <h1 className="title-page" onClick={this.editList}>
+        <h1
+          className="title-page"
+          onClick={this.editList}
+          onKeyPress={this.editList}
+          role="button"
+          tabIndex={0}
+        >
           <span className="title-wrapper">{list.name}</span>
           <span className="count-list">{list.incompleteCount}</span>
         </h1>
@@ -214,7 +220,13 @@ export default class ListHeader extends BaseComponent {
             >
               <Icon className="filter-popover-icon" type="filter" />
             </Popover>
-            <a className="nav-item" onClick={this.toggleListPrivacy}>
+            <a
+              className="nav-item"
+              onClick={this.toggleListPrivacy}
+              onKeyPress={this.toggleListPrivacy}
+              role="button"
+              tabIndex={0}
+            >
               {list.userId ? (
                 <span
                   className="icon-lock"
@@ -227,7 +239,13 @@ export default class ListHeader extends BaseComponent {
                 />
               )}
             </a>
-            <a className="nav-item trash" onClick={this.deleteList}>
+            <a
+              className="nav-item trash"
+              onClick={this.deleteList}
+              onKeyPress={this.deleteList}
+              role="button"
+              tabIndex={0}
+            >
               <span
                 className="icon-trash"
                 title={i18n.__('components.listHeader.deleteList')}
@@ -259,6 +277,9 @@ export default class ListHeader extends BaseComponent {
             className="nav-item"
             onMouseDown={this.cancelEdit}
             onClick={this.cancelEdit}
+            onKeyPress={this.cancelEdit}
+            role="button"
+            tabIndex={0}
           >
             <span
               className="icon-close"
@@ -284,7 +305,13 @@ export default class ListHeader extends BaseComponent {
               }}
               placeholder={i18n.__('components.listHeader.typeToAdd')}
             />
-            <span className="icon-add" onClick={this.focusTodoInput} />
+            <span
+              className="icon-add"
+              onClick={this.focusTodoInput}
+              onKeyPress={this.focusTodoInput}
+              role="button"
+              tabIndex={0}
+            />
           </form>
         </nav>
       )

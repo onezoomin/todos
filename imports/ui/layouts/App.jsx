@@ -119,7 +119,14 @@ export default class App extends Component {
                 type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={this.toggle}
               />
-              <span onClick={this.toggle}>Close Sidebar</span>
+              <span
+                onClick={this.toggle}
+                onKeyPress={this.toggle}
+                role="Button"
+                tabIndex={0}
+              >
+                Close Sidebar
+              </span>
             </Menu.Item>
             <Menu.Item key="1">
               <Icon type="global" />
@@ -156,7 +163,13 @@ export default class App extends Component {
             {showConnectionIssue && !connected ? (
               <ConnectionNotification />
             ) : null}
-            <div className="content-overlay" onClick={this.closeMenu} />
+            <div
+              className="content-overlay"
+              onClick={this.closeMenu}
+              onKeyPress={this.closeMenu}
+              role="Button"
+              tabIndex={0}
+            />
             {loading ? (
               <Loading key="loading" />
             ) : (

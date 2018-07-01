@@ -39,7 +39,7 @@ class LanguageToggle extends BaseComponent {
             key={language}
             href="#toggle-language"
             className="language"
-            onClick={event => this.setLocale(event, language)}
+            onClick={event => this.setLocale(event, language)} onKeyPress={event => this.setLocale(event, language)} role="button" tabIndex={0}
           >
             {language}
           </a>

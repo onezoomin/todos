@@ -27,7 +27,7 @@ export default class UserMenu extends BaseComponent {
 
     return (
       <div className="user-menu vertical">
-        <a href="#toggle" className="btn-secondary" onClick={this.toggle}>
+        <a href="#toggle" className="btn-secondary" onClick={this.toggle} onKeyPress={this.toggle} role="button" tabIndex={0}>
           {open ? (
             <span className="icon-arrow-up" />
           ) : (
@@ -36,7 +36,7 @@ export default class UserMenu extends BaseComponent {
           {emailLocalPart}
         </a>
         {open ? (
-          <a className="btn-secondary" onClick={logout}>
+          <a className="btn-secondary" onClick={logout} onKeyPress={logout} role="button" tabIndex={0}>
             {i18n.__('components.userMenu.logout')}
           </a>
         ) : null}

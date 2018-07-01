@@ -96,6 +96,9 @@ export default class TodoItem extends BaseComponent {
               icon="delete"
               href="#delete"
               onClick={this.deleteTodo}
+              onKeyPress={this.deleteTodo}
+              role="button"
+              tabIndex={0}
               onMouseDown={this.deleteTodo}
             >
               {i18n.__('components.todoItem.deleteItem')}

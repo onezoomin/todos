@@ -16,7 +16,7 @@ class MobileMenu extends BaseComponent {
   render() {
     return (
       <div className="nav-group">
-        <a href="#toggle-menu" className="nav-item" onClick={this.toggleMenu}>
+        <a href="#toggle-menu" className="nav-item" onClick={this.toggleMenu} onKeyPress={this.toggleMenu} role="button" tabIndex={0}>
           <span
             className="icon-list-unordered"
             title={i18n.__('components.mobileMenu.showMenu')}
